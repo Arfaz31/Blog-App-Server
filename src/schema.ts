@@ -11,7 +11,16 @@ signup(
 name: String!
 email: String!
 password: String!
-): User
+): AuthPayload
+
+signin(
+email: String!
+password: String!
+): AuthPayload
+}
+
+type AuthPayload {
+token: String
 }
 
 type Post {
