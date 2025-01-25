@@ -20,6 +20,7 @@ password: String!
 }
 
 type AuthPayload {
+userError: String
 token: String
 }
 
