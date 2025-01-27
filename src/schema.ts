@@ -4,6 +4,7 @@ type Query {
   me: User
   users: [User]
   posts: [Post]
+  profile(userId: ID!): Profile
 }
 
 type Mutation {
@@ -26,6 +27,7 @@ post: postInput!
 
 updatePost(postId: ID!, post: postInput!): PostPayload,
 deletePost(postId: ID!): PostPayload
+publishPost(postId: ID!): PostPayload
 
 }
 

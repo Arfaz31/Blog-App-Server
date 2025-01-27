@@ -79,4 +79,31 @@ export const postResolvers = {
       post: deletedPost,
     };
   },
+  publishPost: async (parent: any, args: any, { prisma, userInfo }: any) => {
+    if (!userInfo) {
+      return {
+        userError: "Unauthorized",
+        post: null,
+      };
+    }
+
+    const error = await checkUserAccess(prisma, userInfo.userId, args.postId);
+    if (error) {
+      return error;
+    }
+
+    const updatePost = await prisma.post.delete({
+      where: {
+        id: Number(args.postId),
+      },
+      data: {
+        published: true,
+      },
+    });
+
+    return {
+      userError: null,
+      post: updatePost,
+    };
+  },
 };
