@@ -25,7 +25,7 @@ post: postInput!
 ): PostPayload,
 
 updatePost(postId: ID!, post: postInput!): PostPayload,
-
+deletePost(postId: ID!): PostPayload
 
 }
 
