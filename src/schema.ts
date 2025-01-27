@@ -13,17 +13,18 @@ name: String!
 email: String!
 password: String!
 bio: String
-): AuthPayload
+): AuthPayload,
 
 signin(
 email: String!
 password: String!
-): AuthPayload
+): AuthPayload,
 
 addPost(
-title: String!
-content: String!
-): PostPayload
+post: postInput!
+): PostPayload,
+
+updatePost(postId: ID!, post: postInput!): PostPayload,
 
 
 }
@@ -59,7 +60,11 @@ id:ID!
 bio: String!
 createdAt: String!
 user:User!
+}
 
+input postInput{
+title:String
+content:String
 }
 
 `;
