@@ -1,5 +1,3 @@
-import { profile } from "console";
-
 export const Query = {
   me: async (parent: any, args: any, { prisma, userInfo }: any, info: any) => {
     return await prisma.user.findUnique({
